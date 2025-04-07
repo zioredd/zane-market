@@ -20,14 +20,22 @@ exports.getProductById = handleAsync(async (req, res) => {
 
 // Add a new product
 exports.createProduct = handleAsync(async (req, res) => {
-  const { name, description, price, category, picture } = req.body;
+  const { name, description, price, picture, categoryId, subcategoryId } =
+    req.body;
 
   // Validate input
   if (!name || !price) {
     return res.status(400).json({ message: "Name and price are required" });
   }
 
-  const product = new Product({ name, description, price, category, picture });
+  const product = new Product({
+    name,
+    description,
+    price,
+    picture,
+    categoryId,
+    subcategoryId,
+  });
   const savedProduct = await product.save();
   res.status(201).json(savedProduct);
 });

@@ -22,10 +22,14 @@ mongoose
 // Import routes
 const productRoutes = require("./routes/productRoutes");
 const authRoutes = require("./routes/authRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
+const subcategoryRoutes = require("./routes/subcategoryRoutes");
 
 // Use routes
 app.use("/products", productRoutes);
 app.use("/auth", authRoutes);
+app.use("/categories", categoryRoutes);
+app.use("/subcategories", subcategoryRoutes);
 
 // Start server
 app.listen(PORT, () => {
